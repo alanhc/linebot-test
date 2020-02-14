@@ -1,3 +1,4 @@
+
 from flask import Flask, request, abort
 
 from linebot import (
@@ -33,10 +34,10 @@ def callback():
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    message = TextSendMessage(text=event.message.text)
+    message = TextSendMessage(text=str(event.message.text+'XD'))
     line_bot_api.reply_message(event.reply_token, message)
 
 import os
 if __name__ == "__main__":
-    port = int(os.environ.get('PORT', 5000))
+    port = int(os.environ.get('PORT', 8081))
     app.run(host='0.0.0.0', port=port)
